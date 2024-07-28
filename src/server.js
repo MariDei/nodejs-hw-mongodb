@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
-import { getAllContacts, getContactByID } from './services/contacts.js';
+import { getAllContacts, getContactById } from './services/contacts.js';
 import { env } from './utils/env.js';
-
-dotenv.config();
 
 const PORT = Number(env('PORT', '3000'));
 export const startServer = () => {
@@ -35,7 +34,7 @@ export const startServer = () => {
   app.get('/contacts/:contactId', async (req, res, next) => {
     try {
       const { contactId } = req.params;
-      const contact = await getContactByID(contactId);
+      const contact = await getContactById(contactId);
 
       if (!contact) {
         return res.status(404).json({
