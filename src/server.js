@@ -1,9 +1,12 @@
-import express from 'express';
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import pino from 'pino-http';
 import cors from 'cors';
 import { getAllContacts, getContactByID } from './services/contacts.js';
+import { env } from './utils/env.js';
 
 dotenv.config();
+
 const PORT = Number(env('PORT', '3000'));
 export const startServer = () => {
   const app = express();
