@@ -5,8 +5,9 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
+    "lint": "eslint src/**/*.js",
     "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "start": "node ./src/index.js"
   },
   "keywords": [],
   "author": "Marianna Dei <d.marianna@icloud.com>",
