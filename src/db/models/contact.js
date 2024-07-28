@@ -18,10 +18,6 @@ const contactSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    year: {
-      type: Number,
-      required: true,
-    },
     contactType: {
       type: String,
       enum: ['work', 'home', 'personal'],
