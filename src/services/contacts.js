@@ -20,3 +20,9 @@ export const createContact = async (payload) => {
   const contact = await Contact.create(payload);
   return contact;
 };
+
+export const updateContact = async (contactId, payload) => {
+  return await Contact.findOneAndUpdate({ _id: contactId }, payload, {
+    new: true,
+  });
+};
