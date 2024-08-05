@@ -26,3 +26,11 @@ export const updateContact = async (contactId, payload) => {
     new: true,
   });
 };
+
+export const deleteContact = async (contactId) => {
+  const contact = await Contact.findOneAndDelete({
+    _id: contactId,
+  });
+
+  return contact;
+};
