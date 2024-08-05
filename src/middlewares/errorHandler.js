@@ -1,19 +1,19 @@
-import { isHttpError } from 'http-errors';
+import { HttpError } from 'http-errors';
+
 // eslint-disable-next-line no-unused-vars
-export async function errorHandler(error, req, res, next) {
-  if (isHttpError(error) === true) {
-    return res.status(error.status).send({
-      status: error.status,
-      message: error.message,
-      data: error,
+export const errorHandler = (err, req, res, next) => {
+  if (err instanceof HttpError) {
+    res.status(err.status).json({
+      status: err.status,
+      message: err.name,
+      data: err,
     });
+    return;
   }
 
-  console.error(error);
-
-  res.status(500).json({
+  res.status(500).send({
     status: 500,
     message: 'Something went wrong',
-    data: error.message,
+    data: err.message,
   });
-}
+};
