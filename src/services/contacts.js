@@ -1,14 +1,8 @@
 import { Contact } from '../db/models/contact.js';
 
 export const getAllContacts = async () => {
-  try {
-    const contacts = await Contact.find();
-    console.log('Contacts:', contacts);
-    return contacts;
-  } catch (error) {
-    console.error('Error fetching contacts:', error);
-    throw error;
-  }
+  const contacts = await Contact.find();
+  return contacts;
 };
 
 export const getContactById = async (contactId) => {
@@ -22,15 +16,15 @@ export const createContact = async (payload) => {
 };
 
 export const updateContact = async (contactId, payload) => {
-  return await Contact.findOneAndUpdate({ _id: contactId }, payload, {
+  const contact = await Contact.findOneAndUpdate({ _id: contactId }, payload, {
     new: true,
   });
+  return contact;
 };
 
 export const deleteContact = async (contactId) => {
   const contact = await Contact.findOneAndDelete({
     _id: contactId,
   });
-
   return contact;
 };
