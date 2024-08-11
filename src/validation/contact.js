@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-export const contactSchema = Joi.object({
+export const createContactSchema = Joi.object({
   name: Joi.string().min(3).max(20).required().messages({
     'string.base': 'Username should be a string',
     'string.min': 'Username should have at least {#limit} characters',
@@ -16,6 +16,12 @@ export const contactSchema = Joi.object({
   isFavourite: Joi.boolean(),
 });
 
-export const contactFavouriteSchema = Joi.object({
-  isFavourite: Joi.boolean().required(),
+export const updateContactSchema = Joi.object({
+  name: Joi.string().min(3).max(20),
+  phoneNumber: Joi.string()
+    .length(13)
+    .pattern(/[6-9]{1}[0-9]{9}/),
+  email: Joi.string().email(),
+  contactType: Joi.string().valid('work', 'home', 'personal'),
+  isFavourite: Joi.boolean(),
 });
