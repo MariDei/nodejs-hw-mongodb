@@ -12,17 +12,16 @@ import {
   patchContactController,
   deleteContactController,
 } from '../controllers/contacts.js';
-import { isValidId } from '../middlewares/ isValidId.js';
+import { isValidId } from '../middlewares/isValidId.js';
 
 const router = express.Router();
-
 const jsonParser = express.json();
 
 router.get('/contacts', ctrlWrapper(getContactsController));
 
 router.get(
   '/contacts/:contactId',
-  isValidId,
+  isValidId('contactId'),
   ctrlWrapper(getContactsByIdController),
 );
 
@@ -35,7 +34,7 @@ router.post(
 
 router.patch(
   '/contacts/:contactId',
-  isValidId,
+  isValidId('contactId'),
   jsonParser,
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
@@ -43,7 +42,7 @@ router.patch(
 
 router.delete(
   '/contacts/:contactId',
-  isValidId,
+  isValidId('contactId'),
   ctrlWrapper(deleteContactController),
 );
 
