@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+// eslint-disable-next-line no-unused-vars
+import { model, Schema } from 'mongoose';
 
 const contactSchema = new mongoose.Schema(
   {
@@ -24,6 +26,10 @@ const contactSchema = new mongoose.Schema(
       enum: ['work', 'home', 'personal'],
       required: true,
       default: 'personal',
+    },
+    parentId: {
+      type: Schema.Types.ObjectId,
+      ref: 'users',
     },
   },
   {
