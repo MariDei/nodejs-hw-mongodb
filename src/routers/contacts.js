@@ -14,37 +14,29 @@ import {
 } from '../controllers/contacts.js';
 import { isValidId } from '../middlewares/isValidId.js';
 import { authenticate } from '../middlewares/authenticate.js';
-import { checkRoles } from '../middlewares/checkRoles.js';
-import { ROLES } from '../constants/index.js';
 
 const router = express.Router();
 const jsonParser = express.json();
 
 router.use(authenticate);
 
-router.get(
-  '/contacts',
-  checkRoles(ROLES.TEACHER),
-  ctrlWrapper(getContactsController),
-);
+router.get('/contacts', ctrlWrapper(getContactsController));
 
 router.get(
   '/contacts/:contactId',
-  checkRoles(ROLES.TEACHER, ROLES.PARENT),
   isValidId('contactId'),
   ctrlWrapper(getContactsByIdController),
 );
 
 router.post(
   '/register',
-  checkRoles(ROLES.TEACHER),
+  jsonParser,
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
 );
 
 router.patch(
   '/contacts/:contactId',
-  checkRoles(ROLES.TEACHER, ROLES.PARENT),
   isValidId('contactId'),
   jsonParser,
   validateBody(updateContactSchema),
@@ -53,7 +45,6 @@ router.patch(
 
 router.delete(
   '/contacts/:contactId',
-  checkRoles(ROLES.TEACHER),
   isValidId('contactId'),
   ctrlWrapper(deleteContactController),
 );
