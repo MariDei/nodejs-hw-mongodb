@@ -1,6 +1,4 @@
-import mongoose from 'mongoose';
-// eslint-disable-next-line no-unused-vars
-import { model, Schema } from 'mongoose';
+import { mongoose, Schema } from 'mongoose';
 
 const contactSchema = new mongoose.Schema(
   {
@@ -14,11 +12,10 @@ const contactSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: true,
+      required: false,
     },
     isFavourite: {
       type: Boolean,
-      required: true,
       default: false,
     },
     contactType: {
@@ -27,9 +24,10 @@ const contactSchema = new mongoose.Schema(
       required: true,
       default: 'personal',
     },
-    parentId: {
+    userId: {
       type: Schema.Types.ObjectId,
       ref: 'users',
+      required: true,
     },
   },
   {
@@ -38,6 +36,4 @@ const contactSchema = new mongoose.Schema(
   },
 );
 
-const Contact = mongoose.model('Contact', contactSchema);
-
-export { Contact };
+export const Contact = mongoose.model('contacts', contactSchema);
