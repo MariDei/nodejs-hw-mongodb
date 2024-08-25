@@ -29,7 +29,7 @@ router.get(
 );
 
 router.post(
-  '/register',
+  '/contacts',
   jsonParser,
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
