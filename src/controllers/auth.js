@@ -7,12 +7,7 @@ import {
 import { THIRTY_DAYS } from '../constants/index.js';
 
 export const registerUserController = async (req, res) => {
-  const payload = {
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-  };
-  const user = await registerUser(payload);
+  const user = await registerUser(req.body);
 
   res.status(201).json({
     status: 201,
@@ -22,16 +17,15 @@ export const registerUserController = async (req, res) => {
 };
 
 export const loginUserController = async (req, res) => {
-  const { email, password } = req.body;
-  const session = await loginUser(email, password);
+  const session = await loginUser(req.body);
 
   res.cookie('refreshToken', session.refreshToken, {
     httpOnly: true,
-    expires: session.refreshTokenValidUntil,
+    expires: new Date(Date.now() + THIRTY_DAYS),
   });
   res.cookie('sessionId', session._id, {
     httpOnly: true,
-    expires: session.refreshTokenValidUntil,
+    expires: new Date(Date.now() + THIRTY_DAYS),
   });
 
   res.json({
@@ -44,8 +38,10 @@ export const loginUserController = async (req, res) => {
 };
 
 export const logoutUserController = async (req, res) => {
-  if (req.cookies.sessionId) {
-    await logoutUser(req.cookies.sessionId);
+  const { sessionId } = req.cookies;
+
+  if (typeof sessionId === 'string') {
+    await logoutUser(sessionId);
   }
 
   res.clearCookie('sessionId');
@@ -54,14 +50,14 @@ export const logoutUserController = async (req, res) => {
   res.status(204).send();
 };
 
-const startSession = (res, session) => {
+const setupSession = (res, session) => {
   res.cookie('refreshToken', session.refreshToken, {
     httpOnly: true,
-    expires: new Date(Date.now() + THIRTY_DAYS),
+    expires: session.refreshTokenValidUntil,
   });
   res.cookie('sessionId', session._id, {
     httpOnly: true,
-    expires: new Date(Date.now() + THIRTY_DAYS),
+    expires: session.refreshTokenValidUntil,
   });
 };
 
@@ -71,7 +67,7 @@ export const refreshUserSessionController = async (req, res) => {
     refreshToken: req.cookies.refreshToken,
   });
 
-  startSession(res, session);
+  setupSession(res, session);
 
   res.json({
     status: 200,

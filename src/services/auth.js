@@ -12,7 +12,7 @@ export const registerUser = async (payload) => {
   }
   payload.password = await bcrypt.hash(payload.password, 10);
 
-  return await Users.create(payload);
+  return Users.create(payload);
 };
 
 export const loginUser = async (email, password) => {
