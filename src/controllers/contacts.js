@@ -49,21 +49,6 @@ export const getContactsByIdController = async (req, res) => {
   });
 };
 
-// export const createContactController = async (req, res) => {
-//   const contact = {
-//     ...req.body,
-//     userId: req.user._id,
-//   };
-
-//   const createdContact = await createContact(contact);
-
-//   res.status(201).json({
-//     status: 201,
-//     message: `Successfully created a contact!`,
-//     data: createdContact,
-//   });
-// };
-
 export const createContactController = async (req, res) => {
   const photo = req.file;
 
@@ -93,28 +78,6 @@ export const createContactController = async (req, res) => {
   });
 };
 
-// export const patchContactController = async (req, res, next) => {
-//   const { contactId } = req.params;
-//   const userId = req.user._id;
-//   const updateData = req.body;
-
-//   try {
-//     const result = await updateContact(contactId, updateData, userId);
-
-//     if (!result) {
-//       return next(createHttpError(404, 'Contact not found'));
-//     }
-
-//     res.status(200).json({
-//       status: 200,
-//       message: `Successfully patched a contact!`,
-//       data: result,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
 export const patchContactController = async (req, res, next) => {
   const { contactId } = req.params;
   const userId = req.user._id;
@@ -135,8 +98,9 @@ export const patchContactController = async (req, res, next) => {
     photo: photoUrl,
   });
 
-  if (result === null) {
+  if (!result) {
     next(createHttpError(404, 'Contact not found'));
+    return;
   }
 
   res.status(200).json({
@@ -152,7 +116,8 @@ export const deleteContactController = async (req, res, next) => {
   const contact = await deleteContact(contactId, userId);
 
   if (!contact) {
-    return next(createHttpError(404, 'Contact not found'));
+    next(createHttpError(404, 'Contact not found'));
+    return;
   }
 
   res.status(204).send();
