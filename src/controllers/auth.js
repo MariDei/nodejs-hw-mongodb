@@ -3,10 +3,10 @@ import {
   loginUser,
   refreshUsersSession,
   logoutUser,
+  requestResetToken,
+  resetPassword,
 } from '../services/auth.js';
 import { THIRTY_DAYS } from '../constants/index.js';
-import { requestResetToken } from '../services/auth.js';
-import { resetPassword } from '../services/auth.js';
 
 export const registerUserController = async (req, res) => {
   const payload = {
@@ -52,7 +52,7 @@ export const logoutUserController = async (req, res) => {
   res.clearCookie('sessionId');
   res.clearCookie('refreshToken');
 
-  res.status(204).end();
+  res.status(204).send();
 };
 
 const setupSession = (res, session) => {

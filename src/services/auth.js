@@ -47,10 +47,6 @@ export const loginUser = async (email, password) => {
   });
 };
 
-export const logoutUser = async (sessionId) => {
-  await Sessions.deleteOne({ _id: sessionId });
-};
-
 const createSession = () => {
   const accessToken = randomBytes(30).toString('base64');
   const refreshToken = randomBytes(30).toString('base64');
@@ -85,6 +81,9 @@ export const refreshUsersSession = async ({ sessionId, refreshToken }) => {
     ...newSession,
   });
 };
+export const logoutUser = async (sessionId) => {
+  await Sessions.deleteOne({ _id: sessionId });
+};
 
 export const requestResetToken = async (email) => {
   const user = await Users.findOne({ email });
@@ -96,7 +95,7 @@ export const requestResetToken = async (email) => {
       sub: user._id,
       email,
     },
-    env('JWT_SECRET'),
+    env(SMTP.JWT_SECRET),
     {
       expiresIn: '5m',
     },
@@ -115,7 +114,7 @@ export const requestResetToken = async (email) => {
 
   const html = template({
     name: user.name,
-    link: `${env('APP_DOMAIN')}/reset-password?token=${resetToken}`,
+    link: `${env(SMTP.APP_DOMAIN)}/reset-password?token=${resetToken}`,
   });
 
   try {
@@ -136,7 +135,7 @@ export const requestResetToken = async (email) => {
 export const resetPassword = async ({ token, password }) => {
   let entries;
   try {
-    entries = jwt.verify(token, env('JWT_SECRET'));
+    entries = jwt.verify(token, env(SMTP.JWT_SECRET));
   } catch (err) {
     if (err.name === 'TokenExpiredError' || err.name === 'JsonWebTokenError')
       throw createHttpError(401, 'Token is expired or invalid');
