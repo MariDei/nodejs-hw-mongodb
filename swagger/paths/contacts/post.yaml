@@ -1,0 +1,73 @@
+tags:
+  - Contacts
+summary: Create a contact
+operationId: createContact
+description: 'Create a contact with payload'
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - name
+          - phoneNumber
+          - contactType
+        properties:
+          name:
+            description: 'Contact's name'
+            type: string
+            example: 'Marta Guldman'
+          phoneNumber:
+            description: 'Contact's phone number'
+            type: string
+            example: '+380395452294'
+          email:
+            description: 'Contact's email address'
+            type: string
+            example: 'mg@icloud.com'
+           isFavourite:
+            description: 'Whether is contact favourite?'
+            type: boolean
+            example: false
+            default: false
+          contactType:
+            description: 'Contact's type'
+            type: string
+            enum: ['work', 'home', 'personal']
+            example: 'work'
+            default: 'personal'
+          photo:
+            description: 'Contact's photo-URL'
+            type: string
+            format: binary
+  description: 'Details to create a contact'
+responses:
+  '201':
+    description: 'Create a contact'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: 'Successfully created a contact!'
+            data:
+              type: object
+              $ref: ../../components/schemas/contact.yaml
+  '400':
+    $ref: ../../components/responses/400.yaml
+  '401':
+    $ref: ../../components/responses/401.yaml
+  '500':
+    $ref: ../../components/responses/500.yaml
+
