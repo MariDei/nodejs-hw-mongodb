@@ -1,0 +1,23 @@
+type: object
+required:
+  - name
+  - email
+  - password
+properties:
+  _id:
+    description: 'Contact's id.'
+    type: string
+    format: objectId
+    example: '66d8a90efca05bf0ee47593a'
+  name:
+    description: 'Contact's full name'
+    type: string
+    example: 'Marta Guldman'
+  email:
+    description: 'Contact's email address'
+    type: string
+    example: 'mg@icloud.com"'
+  password:
+    description: 'Contact's password'
+    type: string
+    example: 'MG07sept24'
