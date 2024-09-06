@@ -1,19 +1,12 @@
-description: Contact not found
+description: 'Conflict, email in use'
 content:
   application/json:
     schema:
       type: object
-      required:
-        - status
-        - message
-        - data
       properties:
         status:
           type: integer
-          example: 404
+          example: 409
         message:
           type: string
-          example: Not found
-        data:
-          type: object
-          example: {}
+          example: 'Email in use'

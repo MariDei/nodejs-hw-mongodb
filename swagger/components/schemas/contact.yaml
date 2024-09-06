@@ -44,3 +44,4 @@ properties:
     description: 'Contact's photo-URL'
     type: string
     example: 'https://res.cloudinary.com/dbwvfktxa/image/upload/v1725475085/obycnfqz.jpg'
+

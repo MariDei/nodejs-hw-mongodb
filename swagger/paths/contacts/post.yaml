@@ -16,15 +16,15 @@ requestBody:
           - contactType
         properties:
           name:
-            description: 'Contact name'
+            description: 'Contact's name'
             type: string
             example: 'Marta Guldman'
           phoneNumber:
-            description: 'Contact phone number'
+            description: 'Contact's phone number'
             type: string
             example: '+380395452294'
           email:
-            description: 'Contact  email address'
+            description: 'Contact's email address'
             type: string
             example: 'mg@icloud.com'
            isFavourite:
@@ -33,13 +33,13 @@ requestBody:
             example: false
             default: false
           contactType:
-            description: 'Contact type'
+            description: 'Contact's type'
             type: string
             enum: ['work', 'home', 'personal']
             example: 'work'
             default: 'personal'
           photo:
-            description: 'Contact photo-URL'
+            description: 'Contact's photo-URL'
             type: string
             format: binary
   description: 'Details to create a contact'
@@ -70,3 +70,4 @@ responses:
     $ref: ../../components/responses/401.yaml
   '500':
     $ref: ../../components/responses/500.yaml
+

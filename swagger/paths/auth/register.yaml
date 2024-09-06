@@ -20,19 +20,19 @@ requestBody:
             description: 'Backend-generated unique id.'
             type: string
             format: objectId
-            example: 66d8a90efca05bf0ee47593a
+            example: '66d8a90efca05bf0ee47593a'
           name:
             description: 'User's full name'
             type: string
-            example: Marta Guldman
+            example: 'Marta Guldman'
           email:
             description: 'User's email address'
             type: string
-            example: mg@icloud.com
+            example: 'mg@icloud.com'
           password:
             description: 'User's password'
             type: string
-            example: MG07sept24
+            example: 'MG07sept24'
   description: 'User details required for registration'
 responses:
   '201':
@@ -59,15 +59,15 @@ responses:
                   description: 'Backend-generated unique id.'
                   type: string
                   format: objectId
-                  example: 66d8a90efca05bf0ee47593a
+                  example: '66d8a90efca05bf0ee47593a'
                 name:
                   description: 'User's full name'
                   type: string
-                  example: Marta Guldman
+                  example: 'Marta Guldman'
                 email:
                   description: 'User's email address'
                   type: string
-                  example: mg@icloud.com
+                  example: 'mg@icloud.com'
   '400':
     $ref: '../../components/responses/400.yaml'
   '409':

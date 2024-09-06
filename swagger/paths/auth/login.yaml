@@ -16,11 +16,11 @@ requestBody:
           - password
         properties:
           email:
-            description: 'E-mail address'
+            description: 'Contact's email address'
             type: string
             example: 'mg@icloud.com'
           password:
-            description: 'Password'
+            description: 'Contact's password'
             type: string
             example: 'MG07sept24'
   description: 'User credentials required for authentication'
