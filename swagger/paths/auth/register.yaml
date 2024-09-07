@@ -22,17 +22,17 @@ requestBody:
             format: objectId
             example: '66d8a90efca05bf0ee47593a'
           name:
-            description: 'User's full name'
+            description: 'Username'
             type: string
             example: 'Marta Guldman'
           email:
-            description: 'User's email address'
+            description: 'E-mail address'
             type: string
             example: 'mg@icloud.com'
           password:
-            description: 'User's password'
+            description: 'Password'
             type: string
-            example: 'MG07sept24'
+            example: 'examplepwd12345'
   description: 'User details required for registration'
 responses:
   '201':
@@ -61,13 +61,13 @@ responses:
                   format: objectId
                   example: '66d8a90efca05bf0ee47593a'
                 name:
-                  description: 'User's full name'
+                  description: 'Username'
                   type: string
                   example: 'Marta Guldman'
                 email:
-                  description: 'User's email address'
+                  description: 'E-mail address'
                   type: string
-                  example: 'mg@icloud.com'
+                  example: 'marta_guld@gmail.com'
   '400':
     $ref: '../../components/responses/400.yaml'
   '409':
