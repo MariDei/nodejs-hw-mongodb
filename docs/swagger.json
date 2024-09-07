@@ -386,16 +386,16 @@
                     "type": "string",
                     "example": "+380395452294"
                   },
-                  "isFavourite": {
-                    "description": "Indicates whether the contact is marked as a favorite",
-                    "type": "boolean",
-                    "example": true
-                  },
                   "email": {
                     "description": "The e-mail of the contact",
                     "type": "string",
                     "example": "mg@icloud.com",
                     "default": false
+                  },
+                  "isFavourite": {
+                    "description": "Indicates whether the contact is marked as a favorite",
+                    "type": "boolean",
+                    "example": true
                   },
                   "contactType": {
                     "description": "Specifies the type of contact",
@@ -594,7 +594,7 @@
                         "email": {
                           "description": "E-mail address",
                           "type": "string",
-                          "example": "marta_guld@gmail.com"
+                          "example": "mg@icloud.com"
                         }
                       }
                     }
@@ -1029,7 +1029,7 @@
           "photo": {
             "description": "URL to the contacts photo",
             "type": "string",
-            "example": "https://res.cloudinary.com/dj45to3zp/image/upload/v1724847181/gm4u7mjk3mphs5edwibk.jpg"
+            "example": "https://res.cloudinary.com/dbwvfktxa/image/upload/v1725475085/obycnfqzkjgtvmclrqfc.jpg"
           }
         }
       }
