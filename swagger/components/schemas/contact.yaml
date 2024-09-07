@@ -3,45 +3,42 @@ required:
   - _id
   - name
   - phoneNumber
-  - email
-  - isFavourite
   - contactType
   - userId
 properties:
   _id:
-    description: 'Contact's id.'
+    description: 'Backend-generated unique id.'
     type: string
     format: objectId
     example: '66d8a90efca05bf0ee47593a'
   name:
-    description: 'Contact's name"'
+    description: 'The name of the contact'
     type: string
     example: 'Marta Guldman'
   phoneNumber:
-    description: 'Contact's phone number'
+    description: 'The phone number of the contact'
     type: string
     example: '+380395452294'
   email:
-    description: 'Contact's email address'
+    description: 'The email of the contact'
     type: string
     example: 'mg@icloud.com'
-  isFavorite:
-    description: 'Whether is contact favourite?'
+  isFavourite:
+    description: 'Indicates whether the contact is marked as a favorite'
     type: boolean
     example: false
   contactType:
-    description: 'Contact's type'
+    description: 'Specifies the type of contact'
     type: string
     enum: ['work', 'home', 'personal']
-    example: 'work'
+    example: 'home'
     default: 'personal'
   userId:
     description: 'Unique id for the user who owns the contact'
     type: string
     format: objectId
-    example: '66d8a90efca05bf0ee47593a'
+    example: '66d8a817fca05bf0ee475930'
   photo:
-    description: 'Contact's photo-URL'
+    description: 'URL to the contacts photo'
     type: string
-    example: 'https://res.cloudinary.com/dbwvfktxa/image/upload/v1725475085/obycnfqz.jpg'
-
+    example: 'https://res.cloudinary.com/dbwvfktxa/image/upload/v1725475085/obycnfqzkjgtvmclrqfc.jpg'

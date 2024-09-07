@@ -18,11 +18,11 @@ requestBody:
           password:
             description: 'New password'
             type: string
-            example: 'mg0624sept'
+            example: 'examplepwd123456'
           token:
             description: 'The token used to verify the password reset request'
             type: string
-            example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXCVI9.eyJzdWIiOiI2NmM2ZmQ2MzZhNzk2ODk5MTYzNDBmZTciLCJlbWFpbCI6ImNodW1hY2hvY2xAZ21haWwughjtIiwiaWF0IjoxNzI0NzYzNzkwLCJleHAiOjE3MjQ3NjQwOTB9.n8nu12RjBqv0g8twrPExpV-9bkDVfDNZDPSbHx6hwyw'
+            example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NmM2ZmQ2MzZhNzk2ODk5MTYzNDBmZTciLCJlbWFpbCI6ImNodW1hY2hvY2xAZ21haWwuY29tIiwiaWF0IjoxNzI0NzYzNzkwLCJleHAiOjE3MjQ3NjQwOTB9.n8nu12RjBqv0g9twrPExpV-9bkDVfDNZDPSbHx6hwyw'
   description: 'Password reset details including the new password and reset token'
 responses:
   '200':
