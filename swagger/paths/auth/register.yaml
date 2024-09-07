@@ -67,7 +67,7 @@ responses:
                 email:
                   description: 'E-mail address'
                   type: string
-                  example: 'marta_guld@gmail.com'
+                  example: 'mg@icloud.com'
   '400':
     $ref: '../../components/responses/400.yaml'
   '409':

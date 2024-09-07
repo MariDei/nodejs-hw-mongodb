@@ -28,15 +28,15 @@ requestBody:
             description: 'The phone number of the contact'
             type: string
             example: '+380395452294'
-          isFavourite:
-            description: 'Indicates whether the contact is marked as a favorite'
-            type: boolean
-            example: true
           email:
             description: 'The e-mail of the contact'
             type: string
             example: 'mg@icloud.com'
             default: false
+          isFavourite:
+            description: 'Indicates whether the contact is marked as a favorite'
+            type: boolean
+            example: true
           contactType:
             description: 'Specifies the type of contact'
             type: string
